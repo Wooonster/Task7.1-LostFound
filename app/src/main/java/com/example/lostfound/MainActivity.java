@@ -20,5 +20,10 @@ public class MainActivity extends AppCompatActivity {
             Intent toReportIntent = new Intent(getApplicationContext(), PostActivity.class);
             startActivity(toReportIntent);
         });
+
+        binding.showAllBtn.setOnClickListener(view -> {
+            Intent toShowIntent = new Intent(getApplicationContext(), ShowActivity.class);
+            startActivity(toShowIntent);
+        });
     }
 }
