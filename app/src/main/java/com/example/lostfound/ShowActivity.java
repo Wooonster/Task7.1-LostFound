@@ -25,7 +25,7 @@ public class ShowActivity extends AppCompatActivity {
     PostsDAO postsDAO;
 
     static final ExecutorService databaseWriteExecutor =
-            Executors.newFixedThreadPool(1);
+            Executors.newFixedThreadPool(4);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,10 @@ public class ShowActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(view -> {
             Intent addNewPostIntent = new Intent(this, PostActivity.class);
             startActivity(addNewPostIntent);
+        });
+
+        binding.homeFab.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         });
     }
 }

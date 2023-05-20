@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LostFound</string>
+    <string name="map_api_key">AIzaSyDDNkQocuZvP9arDvnqSNwXtd8kT5nCPrU</string>
 </resources>

@@ -16,14 +16,19 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+//        add lost/found advertise
         binding.reportBtn.setOnClickListener(view -> {
-            Intent toReportIntent = new Intent(getApplicationContext(), PostActivity.class);
-            startActivity(toReportIntent);
+            startActivity(new Intent(getApplicationContext(), PostActivity.class));
         });
 
+//        check all lost/found advertises
         binding.showAllBtn.setOnClickListener(view -> {
-            Intent toShowIntent = new Intent(getApplicationContext(), ShowActivity.class);
-            startActivity(toShowIntent);
+            startActivity(new Intent(getApplicationContext(), ShowActivity.class));
+        });
+
+//        show all advertises on Map
+        binding.showOnMapBtn.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), MapActivity.class));
         });
     }
 }

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -12,6 +14,10 @@ import com.example.lostfound.databinding.ActivityPostBinding;
 import com.example.lostfound.database.PostDatabase;
 import com.example.lostfound.entities.PostItem;
 
+import java.io.IOError;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,7 +27,6 @@ public class PostActivity extends AppCompatActivity {
     private boolean postType;
     PostDatabase postDatabase;
     PostsDAO postsDAO;
-
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(1);
 
@@ -40,7 +45,8 @@ public class PostActivity extends AppCompatActivity {
         binding.postBtn.setOnClickListener(view -> {
             PostItem newPost = new PostItem(postType, binding.nameEdit.getText().toString(),
                     binding.phoneEdit.getText().toString(), binding.descriptionEdit.getText().toString(),
-                    binding.dateEdit.getText().toString(), binding.locationEdit.getText().toString());
+                    binding.dateEdit.getText().toString(),
+                    binding.locationEdit.getText().toString());
 
             try {
                 databaseWriteExecutor.execute(() -> {
@@ -53,7 +59,6 @@ public class PostActivity extends AppCompatActivity {
             Intent toShowIntent = new Intent(getApplicationContext(), ShowActivity.class);
             startActivity(toShowIntent);
         });
-
     }
 
     private void checkboxUnique() {
